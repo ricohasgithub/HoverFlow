@@ -54,7 +54,7 @@ class Hand_CNN(keras.Model):
 
     # This function initializes a new Hand Gesture CNN based on the constructor arguments
     def build_model(self):
-        
+
         # Begin model layering construction procedure
         model = Sequential()
         
@@ -96,10 +96,76 @@ class Hand_CNN(keras.Model):
             kernel_initializer = keras.initializers.glorot_normal
         ))
 
+        model.add(keras.layers.MaxPool2D(
+            pool_size = [2,2],
+            strides = 2
+        ))
 
+        model.add(keras.layers.Conv2D(
+            filters = 256,
+            kernel_size = [3, 3],
+            strides = [1, 1],
+            activation = keras.activations.relu,
+            kernel_initializer = keras.initializers.glorot_normal
+        ))
+
+        model.add(keras.layers.Conv2D(
+            filters = 128,
+            kernel_size = [3, 3],
+            strides = [1, 1],
+            activation = keras.activations.relu,
+            kernel_initializer = keras.initializers.glorot_normal
+        ))
+
+        model.add(keras.layers.MaxPool2D(
+            pool_size = [2,2],
+            strides = 2
+        ))
+
+        model.add(keras.layers.Conv2D(
+            filters = 512,
+            kernel_size = [3, 3],
+            strides = [1, 1],
+            activation = keras.activations.relu,
+            kernel_initializer = keras.initializers.glorot_normal
+        ))
+
+        model.add(keras.layers.Conv2D(
+            filters = 512,
+            kernel_size = [3, 3],
+            strides = [1, 1],
+            activation = keras.activations.relu,
+            kernel_initializer = keras.initializers.glorot_normal
+        ))
+
+        model.add(keras.layers.Conv2D(
+            filters = 512,
+            kernel_size = [3, 3],
+            strides = [1, 1],
+            activation = keras.activations.relu,
+            kernel_initializer = keras.initializers.glorot_normal
+        ))
+
+        model.add(keras.layers.Conv2D(
+            filters = 512,
+            kernel_size = [3, 3],
+            strides = [1, 1],
+            activation = keras.activations.relu,
+            kernel_initializer = keras.initializers.glorot_normal
+        ))
+
+        model.add(keras.layers.Conv2D(
+            filters = 128,
+            kernel_size = [3, 3],
+            strides = [1, 1],
+            activation = keras.activations.relu,
+            kernel_initializer = keras.initializers.glorot_normal
+        ))
 
         self.model = model
         
+    def get_model(self):
+        return self.model
 
     def load_model_weights(self, config):
         self.model = Sequential.from_config(config)
