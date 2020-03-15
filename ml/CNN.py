@@ -58,6 +58,7 @@ class Hand_CNN(keras.Model):
         # Begin model layering construction procedure
         model = Sequential()
         
+        # Conv2D
         model.add(keras.layers.Conv2D(
             input_shape = (self.input_size, self.input_size, 3),
             filters = 64,
@@ -67,6 +68,7 @@ class Hand_CNN(keras.Model):
             kernel_initializer = keras.initializers.glorot_normal
         ))
 
+        # Conv2D
         model.add(keras.layers.Conv2D(
             filters = 64,
             kernel_size = [3, 3],
@@ -75,11 +77,13 @@ class Hand_CNN(keras.Model):
             kernel_initializer = keras.initializers.glorot_normal
         ))
 
+        # MaxPooling2D
         model.add(keras.layers.MaxPool2D(
             pool_size = [2,2],
             strides = 2
         ))
 
+        # Conv2D
         model.add(keras.layers.Conv2D(
             filters = 128,
             kernel_size = [3, 3],
@@ -88,6 +92,7 @@ class Hand_CNN(keras.Model):
             kernel_initializer = keras.initializers.glorot_normal
         ))
 
+        # Conv2D
         model.add(keras.layers.Conv2D(
             filters = 128,
             kernel_size = [3, 3],
@@ -96,11 +101,13 @@ class Hand_CNN(keras.Model):
             kernel_initializer = keras.initializers.glorot_normal
         ))
 
+        # MaxPooling2D
         model.add(keras.layers.MaxPool2D(
             pool_size = [2,2],
             strides = 2
         ))
 
+        # Conv2D
         model.add(keras.layers.Conv2D(
             filters = 256,
             kernel_size = [3, 3],
@@ -109,6 +116,7 @@ class Hand_CNN(keras.Model):
             kernel_initializer = keras.initializers.glorot_normal
         ))
 
+        # Conv2D
         model.add(keras.layers.Conv2D(
             filters = 128,
             kernel_size = [3, 3],
@@ -117,11 +125,13 @@ class Hand_CNN(keras.Model):
             kernel_initializer = keras.initializers.glorot_normal
         ))
 
+        # MaxPooling2D
         model.add(keras.layers.MaxPool2D(
             pool_size = [2,2],
             strides = 2
         ))
 
+        # Conv2D
         model.add(keras.layers.Conv2D(
             filters = 512,
             kernel_size = [3, 3],
@@ -130,6 +140,7 @@ class Hand_CNN(keras.Model):
             kernel_initializer = keras.initializers.glorot_normal
         ))
 
+        # Conv2D
         model.add(keras.layers.Conv2D(
             filters = 512,
             kernel_size = [3, 3],
@@ -138,6 +149,7 @@ class Hand_CNN(keras.Model):
             kernel_initializer = keras.initializers.glorot_normal
         ))
 
+        # Conv2D
         model.add(keras.layers.Conv2D(
             filters = 512,
             kernel_size = [3, 3],
@@ -146,6 +158,7 @@ class Hand_CNN(keras.Model):
             kernel_initializer = keras.initializers.glorot_normal
         ))
 
+        # Conv2D
         model.add(keras.layers.Conv2D(
             filters = 512,
             kernel_size = [3, 3],
@@ -154,6 +167,7 @@ class Hand_CNN(keras.Model):
             kernel_initializer = keras.initializers.glorot_normal
         ))
 
+        # Conv2D
         model.add(keras.layers.Conv2D(
             filters = 128,
             kernel_size = [3, 3],
@@ -162,6 +176,7 @@ class Hand_CNN(keras.Model):
             kernel_initializer = keras.initializers.glorot_normal
         ))
 
+        # Update the model object of the current parameter
         self.model = model
         
     def get_model(self):
