@@ -1,3 +1,13 @@
+
+'''
+
+Hand Pose Convolutional Neural Network
+
+The Keras implementation based on the CPM CNN denoted here:
+https://github.com/timctho/convolutional-pose-machines-tensorflow/blob/master/models/nets/cpm_hand.py
+
+'''
+
 # Libraries required for model construction
 import tensorflow as tf
 
@@ -44,23 +54,49 @@ class Hand_CNN(keras.Model):
 
     # This function initializes a new Hand Gesture CNN based on the constructor arguments
     def build_model(self):
+        
         # Begin model layering construction procedure
         model = Sequential()
         
-        model.add(keras.layers.Conv2D(input_shape = (self.input_size, self.input_size, 3),
-                                                             filters = 64,
-                                                             kernel_size = [3,3],
-                                                             strides = [1, 1],
-                                                             activation = keras.activations.relu,
-                                                             kernel_initializer = keras.initializers.glorot_normal
-                                                            ))
+        model.add(keras.layers.Conv2D(
+            input_shape = (self.input_size, self.input_size, 3),
+            filters = 64,
+            kernel_size = [3,3],
+            strides = [1, 1],
+            activation = keras.activations.relu,
+            kernel_initializer = keras.initializers.glorot_normal
+        ))
 
-        model.add(keras.layers.Conv2D(filters = 64,
-                                      kernel_size = [3, 3],
-                                      strides = [1, 1],
-                                      activation = keras.activations.relu,
-                                      kernel_initializer = keras.initializers.glorot_normal,
-                                     ))
+        model.add(keras.layers.Conv2D(
+            filters = 64,
+            kernel_size = [3, 3],
+            strides = [1, 1],
+            activation = keras.activations.relu,
+            kernel_initializer = keras.initializers.glorot_normal
+        ))
+
+        model.add(keras.layers.MaxPool2D(
+            pool_size = [2,2],
+            strides = 2
+        ))
+
+        model.add(keras.layers.Conv2D(
+            filters = 128,
+            kernel_size = [3, 3],
+            strides = [1, 1],
+            activation = keras.activations.relu,
+            kernel_initializer = keras.initializers.glorot_normal
+        ))
+
+        model.add(keras.layers.Conv2D(
+            filters = 128,
+            kernel_size = [3, 3],
+            strides = [1, 1],
+            activation = keras.activations.relu,
+            kernel_initializer = keras.initializers.glorot_normal
+        ))
+
+
 
         self.model = model
         
